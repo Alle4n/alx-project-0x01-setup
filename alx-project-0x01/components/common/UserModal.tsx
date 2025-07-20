@@ -1,8 +1,8 @@
-import { UserData, UserModalProps } from "@/interfaces";
+import { UserProps, UserModalProps } from "@/interfaces";
 import React, { useState } from "react";
 
 const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
-  const [user, setUser] = useState<UserData>({
+  const [user, setUser] = useState<UserProps>({
     name: "",
     username: "",
     email: "",
@@ -36,9 +36,9 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
       setUser(prev => ({
         ...prev,
         [group]: {
-          ...prev[group],
+          ...(prev as any)[group],
           [subGroup]: {
-            ...prev[group][subGroup],
+            ...((prev as any)[group]?.[subGroup] || {}),
             [name]: value
           }
         }
@@ -47,7 +47,7 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
       setUser(prev => ({
         ...prev,
         [group]: {
-          ...prev[group],
+          ...(prev as any)[group],
           [name]: value
         }
       }));

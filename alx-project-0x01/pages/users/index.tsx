@@ -1,7 +1,7 @@
 import Header from "@/components/layout/Header";
 import UserCard from "@/components/common/UserCard";
 import UserModal from "@/components/common/UserModal";
-import { UserData, UserProps } from "@/interfaces";
+import { UserProps } from "@/interfaces";
 import { useState } from "react";
 
 interface UsersPageProps {
@@ -9,10 +9,10 @@ interface UsersPageProps {
 }
 
 const Users: React.FC<UsersPageProps> = ({ posts }) => {
-  const [users, setUsers] = useState<UserData[]>(posts);
+  const [users, setUsers] = useState<UserProps[]>(posts);
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleAddUser = (newUser: UserData) => {
+  const handleAddUser = (newUser: UserProps) => {
     const id = users.length + 1;
     setUsers(prev => [{ ...newUser, id }, ...prev]);
     setModalOpen(false);
@@ -33,8 +33,8 @@ const Users: React.FC<UsersPageProps> = ({ posts }) => {
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          {users.map((user, key) => (
-            <UserCard key={key} {...user} />
+          {users.map(user => (
+            <UserCard key={user.id} {...user} />
           ))}
         </div>
       </main>
