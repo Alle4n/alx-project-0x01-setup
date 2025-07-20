@@ -1,18 +1,24 @@
-import { PostProps } from "@/interfaces";
+import Header from "@/components/layout/Header";
 
-const PostCard: React.FC<PostProps> = ({ title, body, userId, id }) => {
+const Home: React.FC = () => {
   return (
-    <div className="max-w-xl mx-auto my-6 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
-      </div>
-      <p className="text-gray-600">{body}</p>
-      <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
-        <span>User ID: {userId}</span>
-        <span>Post ID: {id}</span>
-      </div>
+    <div className="flex flex-col h-screen">
+      <Header />
+      <main className="flex-grow flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold text-white">
+            Welcome to our Application!
+          </h1>
+          <p className="mt-4 text-xl text-white">
+            We're glad you're here. Explore and enjoy your experience.
+          </p>
+          <button className="mt-6 px-6 py-3 bg-white text-blue-500 rounded-full font-semibold hover:bg-gray-200 transition">
+            Get Started
+          </button>
+        </div>
+      </main>
     </div>
   );
 };
 
-export default PostCard;
+export default Home;
