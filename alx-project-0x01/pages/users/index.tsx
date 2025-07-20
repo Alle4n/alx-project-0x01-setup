@@ -6,7 +6,7 @@ interface UsersPageProps {
   posts: UserProps[];
 }
 
-const UsersPage: React.FC<UsersPageProps> = ({ posts }) => {
+const Users: React.FC<UsersPageProps> = ({ posts }) => {
   return (
     <>
       <Header />
@@ -25,7 +25,6 @@ const UsersPage: React.FC<UsersPageProps> = ({ posts }) => {
   );
 };
 
-// ✅ Static Generation
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
   const posts = await response.json();
@@ -37,4 +36,4 @@ export async function getStaticProps() {
   };
 }
 
-export default UsersPage;
+export default Users;
