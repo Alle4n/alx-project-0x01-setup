@@ -8,6 +8,8 @@ interface PostsPageProps {
   posts: PostProps[];
 }
 
+const [post, setPost] = useState<PostData | null>(null);
+
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [customPosts, setCustomPosts] = useState<PostData[]>([]);
